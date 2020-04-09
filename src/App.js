@@ -291,7 +291,7 @@ class App extends React.Component {
           <input type="text" class="form-styling" name="submit" placeholder="Submit" onClick={this.handleSubmit} />
         </Submit>
       </InfoContainer>
-      <DisplayScoreContainer>
+      {/* <DisplayScoreContainer>
         <div className="wrapper">
           <ul>
             {this.state.items.map((item) => {
@@ -305,7 +305,7 @@ class App extends React.Component {
             })}
           </ul>
         </div>
-      </DisplayScoreContainer>
+      </DisplayScoreContainer> */}
       {this.bingoRow(1)}
       {this.bingoRow(2)}
       {this.bingoRow(3)}
