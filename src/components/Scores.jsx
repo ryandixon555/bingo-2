@@ -6,19 +6,21 @@ import firebase from '../firebase.js';
 
 const DisplayScoreContainer = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 100%;
   position: relative;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: left;
   justify-content: space-around;
   margin: 20px;
-
-  @media (min-width: 640px){
-    flex-direction: column;
-  }
 `
-
+const ScoreHeader = styled.h1`
+    font-size: 28px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin: 20px;
+`
 const DisplayScore = styled.div`
   position: relative;
   width: 100%;
@@ -37,7 +39,9 @@ const DisplayScoreParagraph = styled.div`
   font-size: 18px;
   margin: 10px;
 `
-
+const MyWrapper = styled.div `
+    max-width: 200px;
+`
 class Scores extends React.Component {
     constructor(props) {
 
@@ -79,21 +83,21 @@ class Scores extends React.Component {
     render() {
     return (
     <>
-        <h1>Scores</h1>
+        <ScoreHeader>Scores</ScoreHeader>
         <DisplayScoreContainer>
-        <div className="wrapper">
-          <ul>
-            {this.state.items.map((item) => {
-              return (
-                <DisplayScore key={item.id}>
-                  <DisplayScoreHeader>score {item.score}</DisplayScoreHeader>
-                  <DisplayScoreParagraph>date {item.date}</DisplayScoreParagraph>
-                  <button onClick={() => this.removeItem(item.id)}>Remove Entry</button>
-                </DisplayScore>
-              )
-            })}
-          </ul>
-        </div>
+        <MyWrapper>
+            <ul>
+                {this.state.items.map((item) => {
+                return (
+                    <DisplayScore key={item.id}>
+                    <DisplayScoreHeader>score {item.score}</DisplayScoreHeader>
+                    <DisplayScoreParagraph>date {item.date}</DisplayScoreParagraph>
+                    <button onClick={() => this.removeItem(item.id)}>Remove Entry</button>
+                    </DisplayScore>
+                )
+                })}
+            </ul>
+        </MyWrapper>
       </DisplayScoreContainer>
     </>
     )};

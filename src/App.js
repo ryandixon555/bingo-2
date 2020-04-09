@@ -93,39 +93,6 @@ const CompletedItem = styled.div`
     width: 30%;
   }
 `
-const DisplayScoreContainer = styled.div`
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  position: relative;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-around;
-  margin: 20px;
-
-  @media (min-width: 640px){
-    flex-direction: column;
-  }
-`
-
-const DisplayScore = styled.div`
-  position: relative;
-  width: 100%;
-  background: linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%);
-  color: white;
-  margin: 20px;
-  padding: 20px;
-`
-
-const DisplayScoreHeader = styled.div`
-  font-size: 22px;
-  margin: 10px;
-`
-
-const DisplayScoreParagraph = styled.div`
-  font-size: 18px;
-  margin: 10px;
-`
 
 class App extends React.Component {
 
@@ -159,8 +126,7 @@ class App extends React.Component {
       "name10": null,
       "name11": null,
       score: 0,
-      date: '',
-      items: []
+      date: ''
     };
 
     this.handleDate = this.handleDate.bind(this);
@@ -250,18 +216,19 @@ class App extends React.Component {
     <MainContainer>
       {
         renderRow.map(item => {
+          
           const id = item.id;
         
           if (this.state[id] === true) {
             return (
-                <CompletedItem id={id}>
+                <CompletedItem key = {id} id={id}>
                   <CardContent></CardContent>
                 </CompletedItem>
             )
           }
           else {
             return (
-              <BingoItem id={item.id} onClick={this.markComplete}> 
+              <BingoItem key = {id} id={item.id} onClick={this.markComplete}> 
                 <CardContent>
                   <Typography variant='button' id={item.id} onClick={this.markComplete}>
                     {item.item}
@@ -285,27 +252,12 @@ class App extends React.Component {
           Score: { this.state.score }
         </ScoreContainer>
         <DateContainer>
-          <input type="text" name="date" class="form-styling" placeholder="Date" onChange={this.handleDate} value={this.state.date}/> 
+          <input type="text" name="date" className="form-styling" placeholder="Date" onChange={this.handleDate} value={this.state.date}/> 
         </DateContainer>
         <Submit>
-          <input type="text" class="form-styling" name="submit" placeholder="Submit" onClick={this.handleSubmit} />
+          <input type="text" className="form-styling" name="submit" placeholder="Submit" onClick={this.handleSubmit} />
         </Submit>
       </InfoContainer>
-      {/* <DisplayScoreContainer>
-        <div className="wrapper">
-          <ul>
-            {this.state.items.map((item) => {
-              return (
-                <DisplayScore key={item.id}>
-                  <DisplayScoreHeader>score {item.score}</DisplayScoreHeader>
-                  <DisplayScoreParagraph>date {item.date}</DisplayScoreParagraph>
-                  <button onClick={() => this.removeItem(item.id)}>Remove Entry</button>
-                </DisplayScore>
-              )
-            })}
-          </ul>
-        </div>
-      </DisplayScoreContainer> */}
       {this.bingoRow(1)}
       {this.bingoRow(2)}
       {this.bingoRow(3)}

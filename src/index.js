@@ -8,17 +8,36 @@ import * as serviceWorker from './serviceWorker';
 import { Route, Link, BrowserRouter as Router } from 'react-router-dom'
 import Scores from './components/Scores';
 
+import styled from 'styled-components';
+
+const MyRouterUl= styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20px;
+    text-align: center;
+    background: linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%);
+    color: white;
+    width: 50%;
+    margin: 0 auto;
+`
+
+const MyRouterLi = styled.div`
+ width: 50%;
+ font-size: 22px;
+`
 const routing = (
     <Router>
       <div>
-        <ul>
-          <li>
+        <MyRouterUl>
+          <MyRouterLi>
             <Link to="/">Home</Link>
-          </li>
-          <li>
+          </MyRouterLi>
+          <MyRouterLi>
             <Link to="/scores">Scores</Link>
-          </li>
-        </ul>
+          </MyRouterLi>
+        </MyRouterUl>
         <Route exact path="/" component={App} />
         <Route path="/scores" component={Scores} />
       </div>
