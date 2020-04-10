@@ -131,15 +131,8 @@ class App extends React.Component {
       date: currentDate
     };
 
-    //this.handleDate = this.handleDate.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
-  // handleDate(e) {
-  //   this.setState({
-  //     [e.target.name]: e.target.value
-  //   });
-  // }
 
   handleSubmit(e) {
     e.preventDefault();
@@ -232,7 +225,7 @@ class App extends React.Component {
             return (
               <BingoItem key = {id} id={item.id} onClick={this.markComplete}> 
                 <CardContent>
-                  <Typography variant='button' id={item.id} onClick={this.markComplete}>
+                  <Typography variant='button' id={item.id}>
                     {item.item}
                   </Typography>
                 </CardContent>
