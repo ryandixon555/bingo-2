@@ -26,6 +26,12 @@
   font-size: 26px;
   color: black;
   text-align: center;
+  background-color: #FA6900;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
 }
 
 @keyframes App-logo-spin {

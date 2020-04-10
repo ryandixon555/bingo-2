@@ -90,8 +90,8 @@ class Scores extends React.Component {
                 {this.state.items.map((item) => {
                 return (
                     <DisplayScore key={item.id}>
-                    <DisplayScoreHeader>score {item.score}</DisplayScoreHeader>
-                    <DisplayScoreParagraph>date {item.date}</DisplayScoreParagraph>
+                    <DisplayScoreHeader>Score: {item.score}</DisplayScoreHeader>
+                    <DisplayScoreParagraph>Date: {item.date}</DisplayScoreParagraph>
                     <button onClick={() => this.removeItem(item.id)}>Remove Entry</button>
                     </DisplayScore>
                 )

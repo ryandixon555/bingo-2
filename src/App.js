@@ -4,6 +4,7 @@ import { Typography, CardContent, } from '@material-ui/core';
 import bingoItems from './bingoItems.json';
 import BingoHeader from './components/bingoHeader';
 import styled from 'styled-components';
+import moment from 'moment';
 
 //Database
 import firebase from './firebase.js';
@@ -45,7 +46,7 @@ const DateContainer = styled.div`
   position: relative;
   font-size: 26px;
 `
-const Submit = styled.div`
+const Submit = styled.button`
   display: flex;
   position: relative;
   align-items: center;
@@ -93,6 +94,7 @@ const CompletedItem = styled.div`
     width: 30%;
   }
 `
+const currentDate = moment(new Date()).format("DD-MM-YYYY");
 
 class App extends React.Component {
 
@@ -126,18 +128,18 @@ class App extends React.Component {
       "name10": null,
       "name11": null,
       score: 0,
-      date: ''
+      date: currentDate
     };
 
-    this.handleDate = this.handleDate.bind(this);
+    //this.handleDate = this.handleDate.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleDate(e) {
-    this.setState({
-      [e.target.name]: e.target.value
-    });
-  }
+  // handleDate(e) {
+  //   this.setState({
+  //     [e.target.name]: e.target.value
+  //   });
+  // }
 
   handleSubmit(e) {
     e.preventDefault();
@@ -152,7 +154,7 @@ class App extends React.Component {
 
     this.setState({
       score: '',
-      date: ''
+      date: currentDate
     });
   }
 
@@ -252,10 +254,10 @@ class App extends React.Component {
           Score: { this.state.score }
         </ScoreContainer>
         <DateContainer>
-          <input type="text" name="date" className="form-styling" placeholder="Date" onChange={this.handleDate} value={this.state.date}/> 
+          Date: {this.state.date}
         </DateContainer>
         <Submit>
-          <input type="text" className="form-styling" name="submit" placeholder="Submit" onClick={this.handleSubmit} />
+          <input type="button" className="form-styling" name="submit" value="Submit" onClick={this.handleSubmit} />
         </Submit>
       </InfoContainer>
       {this.bingoRow(1)}
